@@ -1,12 +1,16 @@
-package cn.codingstyle.config;
+package cn.codingstyle.config.item;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
     private int id;
     private String barcode;

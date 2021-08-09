@@ -1,9 +1,11 @@
 package cn.codingstyle.item;
 
-import cn.codingstyle.config.Item;
-import cn.codingstyle.config.ItemService;
-import cn.codingstyle.config.ItemRequest;
+import cn.codingstyle.config.item.Item;
+import cn.codingstyle.config.item.ItemService;
+import cn.codingstyle.config.item.ItemRequest;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("items")
@@ -15,7 +17,7 @@ public class ItemController {
     }
 
     @PostMapping
-    public void create(@RequestBody ItemForm itemForm) {
+    public void create(@RequestBody @Valid ItemForm itemForm) {
         ItemRequest request = itemForm.toRequest();
         itemService.newItem(request);
     }
@@ -32,7 +34,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable int id) {
         itemService.deleteItem(id);
     }
 }

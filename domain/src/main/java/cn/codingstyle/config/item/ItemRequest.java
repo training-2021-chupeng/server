@@ -1,10 +1,12 @@
-package cn.codingstyle.config;
+package cn.codingstyle.config.item;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
 @Builder
+@Getter
 public class ItemRequest {
     private String barcode;
     private String name;

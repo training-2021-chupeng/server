@@ -36,6 +36,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity(ResponseError.of(exception.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(DBErrorException.class)
+    public ResponseEntity handlerDBException(DBErrorException exception) {
+        log.error("数据库异常:\r\n",exception);
+        return new ResponseEntity(ResponseError.of(exception.getMessage()),HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public ResponseEntity handleArgumentInvalidException(MethodArgumentNotValidException exception) {
@@ -47,6 +53,4 @@ public class GlobalExceptionHandler {
         log.error("参数校验异常:\r\n", exception);
         return new ResponseEntity(ResponseError.of(String.join("|", errorMessages)), HttpStatus.BAD_REQUEST);
     }
-
-
 }

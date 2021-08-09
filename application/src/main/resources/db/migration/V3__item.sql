@@ -1,0 +1,1 @@
+alter table `item` add unique key `barcode_unique_key` (`barcode`);

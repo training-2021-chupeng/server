@@ -1,7 +1,7 @@
 package cn.codingstyle.item;
 
-import cn.codingstyle.config.ItemRepository;
-import cn.codingstyle.config.ItemService;
+import cn.codingstyle.config.item.ItemRepository;
+import cn.codingstyle.config.item.ItemService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

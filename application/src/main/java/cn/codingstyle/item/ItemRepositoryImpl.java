@@ -1,7 +1,7 @@
 package cn.codingstyle.item;
 
-import cn.codingstyle.config.Item;
-import cn.codingstyle.config.ItemRepository;
+import cn.codingstyle.config.item.Item;
+import cn.codingstyle.config.item.ItemRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -28,5 +28,20 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void delete(int id) {
         itemDAO.deleteById(id);
+    }
+
+    @Override
+    public boolean existByBarcode(String barcode) {
+        return itemDAO.existsByBarcode(barcode);
+    }
+
+    @Override
+    public boolean existById(int id) {
+        return itemDAO.existsById(id);
+    }
+
+    @Override
+    public Item findByBarcode(String barcode) {
+        return itemDAO.findByBarcode(barcode).toEntity();
     }
 }

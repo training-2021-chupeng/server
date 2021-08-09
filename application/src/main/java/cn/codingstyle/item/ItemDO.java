@@ -1,6 +1,6 @@
 package cn.codingstyle.item;
 
-import cn.codingstyle.config.Item;
+import cn.codingstyle.config.item.Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

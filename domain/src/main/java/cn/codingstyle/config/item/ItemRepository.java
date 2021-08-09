@@ -1,4 +1,4 @@
-package cn.codingstyle.config;
+package cn.codingstyle.config.item;
 
 import java.util.Optional;
 
@@ -8,4 +8,10 @@ public interface ItemRepository {
     Optional<Item> findById(int id);
 
     void delete(int id);
+
+    boolean existByBarcode(String barcode);
+
+    boolean existById(int id);
+
+    Item findByBarcode(String barcode);
 }
