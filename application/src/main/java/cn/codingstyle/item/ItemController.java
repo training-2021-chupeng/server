@@ -3,6 +3,7 @@ package cn.codingstyle.item;
 import cn.codingstyle.config.Item;
 import cn.codingstyle.config.ItemService;
 import cn.codingstyle.config.ItemRequest;
+import cn.codingstyle.config.Receipt;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,7 +33,12 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    public void delete(@PathVariable int id) {
         itemService.deleteItem(id);
+    }
+
+    @PostMapping("/input-barcode")
+    public Receipt inputBarcode(@RequestBody InputBarcodeForm form) {
+        return itemService.inputBarcode(form.getBarcode(), form.getQuantity());
     }
 }

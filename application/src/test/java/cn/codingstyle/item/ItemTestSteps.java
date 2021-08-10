@@ -3,11 +3,14 @@ package cn.codingstyle.item;
 import cn.codingstyle.base.AutoClear;
 import cn.codingstyle.base.RestCall;
 import cn.codingstyle.config.Item;
+import cn.codingstyle.config.ReceiptItemRepository;
 import com.google.gson.Gson;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.json.JSONException;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -28,6 +31,8 @@ public class ItemTestSteps {
     AutoClear autoClear;
     @Autowired
     ItemFactory itemFactory;
+    @Autowired
+    ReceiptItemRepository receiptItemRepository;
 
     private String response;
 
@@ -106,5 +111,16 @@ public class ItemTestSteps {
     @Then("id 为 {string} 的商品不存在")
     public void id为的商品不存在(String id) {
         assertThat(itemFactory.findById(Integer.valueOf(id)).isPresent(), is(false));
+    }
+
+    @When("录入条码和数量")
+    public void 录入条码和数量(String content) throws IOException {
+        response = restCall.post("/items/input-barcode", content);
+    }
+
+    @Then("获得收据信息")
+    public void 获得收据信息(String expected) throws JSONException {
+        JSONAssert.assertEquals(expected, response, false);
+        receiptItemRepository.clear();
     }
 }

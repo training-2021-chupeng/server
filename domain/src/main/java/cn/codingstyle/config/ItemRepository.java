@@ -8,4 +8,6 @@ public interface ItemRepository {
     Optional<Item> findById(int id);
 
     void delete(int id);
+
+    Optional<Item> findByBarcode(String barcode);
 }

@@ -29,4 +29,9 @@ public class ItemRepositoryImpl implements ItemRepository {
     public void delete(int id) {
         itemDAO.deleteById(id);
     }
+
+    @Override
+    public Optional<Item> findByBarcode(String barcode) {
+        return itemDAO.findByBarcode(barcode).map(ItemDO::toEntity);
+    }
 }
