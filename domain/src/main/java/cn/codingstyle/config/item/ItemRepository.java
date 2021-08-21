@@ -1,5 +1,6 @@
 package cn.codingstyle.config.item;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ItemRepository {
@@ -11,7 +12,5 @@ public interface ItemRepository {
 
     boolean existByBarcode(String barcode);
 
-    boolean existById(int id);
-
-    Item findByBarcode(String barcode);
+    List<Item> findAll();
 }

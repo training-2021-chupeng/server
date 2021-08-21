@@ -6,6 +6,8 @@ import cn.codingstyle.config.item.ItemRequest;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("items")
@@ -20,6 +22,11 @@ public class ItemController {
     public void create(@RequestBody @Valid ItemForm itemForm) {
         ItemRequest request = itemForm.toRequest();
         itemService.newItem(request);
+    }
+
+    @GetMapping()
+    public List<Item> getList() {
+        return itemService.getItemList();
     }
 
     @GetMapping("/{id}")

@@ -2,6 +2,8 @@ package cn.codingstyle.config.item;
 
 import cn.codingstyle.config.BusinessException;
 
+import java.util.List;
+
 public class ItemService {
     private ItemRepository itemRepository;
 
@@ -43,4 +45,7 @@ public class ItemService {
     }
 
 
+    public List<Item> getItemList() {
+        return itemRepository.findAll();
+    }
 }

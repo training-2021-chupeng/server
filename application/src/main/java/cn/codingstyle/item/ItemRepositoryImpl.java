@@ -2,9 +2,13 @@ package cn.codingstyle.item;
 
 import cn.codingstyle.config.item.Item;
 import cn.codingstyle.config.item.ItemRepository;
+import org.assertj.core.util.Lists;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class ItemRepositoryImpl implements ItemRepository {
@@ -36,12 +40,8 @@ public class ItemRepositoryImpl implements ItemRepository {
     }
 
     @Override
-    public boolean existById(int id) {
-        return itemDAO.existsById(id);
+    public List<Item> findAll() {
+        return Lists.newArrayList(itemDAO.findAll()).stream().map(ItemDO::toEntity).collect(Collectors.toList());
     }
 
-    @Override
-    public Item findByBarcode(String barcode) {
-        return itemDAO.findByBarcode(barcode).toEntity();
-    }
 }
