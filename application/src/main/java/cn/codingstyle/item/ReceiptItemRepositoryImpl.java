@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public class ReceiptItemRepositoryImpl implements ReceiptItemRepository {
-    private List<ReceiptItem> receiptItems = new ArrayList<>();
+    private final List<ReceiptItem> receiptItems = new ArrayList<>();
 
     @Override
     public void save(ReceiptItem receiptItem) {

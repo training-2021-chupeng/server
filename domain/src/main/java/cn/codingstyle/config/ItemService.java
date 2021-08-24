@@ -1,17 +1,13 @@
 package cn.codingstyle.config;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class ItemService {
     private ItemRepository itemRepository;
-    private List<ReceiptItem> receiptItems;
     private ReceiptItemRepository receiptItemRepository;
 
     public ItemService(ItemRepository itemRepository, ReceiptItemRepository receiptItemRepository) {
         this.itemRepository = itemRepository;
-        receiptItems = new ArrayList<>();
         this.receiptItemRepository = receiptItemRepository;
     }
 
@@ -36,9 +32,14 @@ public class ItemService {
     }
 
     public Receipt inputBarcode(String barcode, Integer quantity) {
+        /**
+         * barcode -> item
+         * item,quantity -> receiptItem
+         * receiptItem -> receipt
+         *
+         */
         Item item = itemRepository.findByBarcode(barcode).get();
-        ReceiptItem receiptItem = new ReceiptItem(item, quantity);
-        addItem(receiptItem);
+        addItem(new ReceiptItem(item, quantity));
         return new Receipt(receiptItemRepository.findAll());
     }
 

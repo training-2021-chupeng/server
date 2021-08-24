@@ -2,7 +2,6 @@ package cn.codingstyle.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 
@@ -25,6 +24,6 @@ public class ReceiptItem {
 
     public void addQuantity(Integer quantity) {
         this.quantity += quantity;
-        this.totalPrice = this.price.multiply(BigDecimal.valueOf(quantity));
+        this.totalPrice = this.price.multiply(BigDecimal.valueOf(this.quantity));
     }
 }
