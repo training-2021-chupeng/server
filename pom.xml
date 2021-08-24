@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <sonar.host.url>http://10.129.29.165:19000</sonar.host.url>
+        <sonar.host.url>http://110.40.187.228:9000/</sonar.host.url>
     </properties>
 
 </project>
