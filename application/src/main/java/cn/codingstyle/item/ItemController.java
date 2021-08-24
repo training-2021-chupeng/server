@@ -26,6 +26,11 @@ public class ItemController {
         return itemService.getItem(id);
     }
 
+    @GetMapping("/test")
+    public String get() {
+        return "test deploy";
+    }
+
     @PutMapping("/{id}")
     public void update(@PathVariable int id, @RequestBody ItemForm itemForm) {
         ItemRequest request = itemForm.toRequest();
